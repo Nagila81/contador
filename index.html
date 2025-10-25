@@ -11,6 +11,11 @@
 
         <div id="recipiente"></div>
 
+        <script 
+            src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"
+            crossorigin>
+        </script>
+
         <script
             src="https://unpkg.com/react@18.3.1/umd/react.development.js"
             crossorigin>
@@ -38,10 +43,10 @@
 
             const Caixa = ({contador, setarContador}) => {
                 return (
-                    <div>
-                        <Botao aoClicar={() => setarContador(contador--)}>Decrementar</Botao>
-                        <Botao aoClicar={() => setarContador(0)}>Zerar</Botao>
-                        <Botao aoClicar={() => setarContador(contador++)}>Incrementar</Botao>
+                    <div className="flex text-center justify-center gap-4">
+                        <Botao aoClicar={() => setarContador(contador - 1)} className="">Decrementar</Botao>
+                        <Botao aoClicar={() => setarContador(0)} className="">Zerar</Botao>
+                        <Botao aoClicar={() => setarContador(contador + 1)} className="">Incrementar</Botao>
                     </div>
                 );
             };
