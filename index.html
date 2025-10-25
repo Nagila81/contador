@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta 
+            name="viewport" 
+            content="width=device-width, initial-scale=1.0">
+        <title>Contador</title>
+    </head>
+    <body>
+
+        <div id="recipiente"></div>
+
+        <script
+            src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+            crossorigin>
+        </script>
+    
+        <script
+            src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+            crossorigin>
+        </script>
+
+        <script
+            src="https://unpkg.com/@babel/standalone/babel.min.js"
+            crossorigin>
+        </script>
+
+        <script type="text/babel">
+
+            const Contador = ({contador}) => {
+                return <span>{contador}</span>;
+            };
+
+            const Botao = ({children, aoClicar}) => {
+                return <button onClick={aoClicar}>{children}</button>
+            };
+
+            const Caixa = ({contador, setarContador}) => {
+                return (
+                    <div>
+                        <Botao aoClicar={() => setarContador(contador--)}>Decrementar</Botao>
+                        <Botao aoClicar={() => setarContador(0)}>Zerar</Botao>
+                        <Botao aoClicar={() => setarContador(contador++)}>Incrementar</Botao>
+                    </div>
+                );
+            };
+
+            const App = () => {
+
+                const [contador, setarContador] = React.useState(0); 
+
+                return (
+                    <>
+                        <Contador contador={contador}/>
+                        <Caixa
+                            contador={contador}
+                            setarContador={setarContador}
+                        />
+                    </>
+                );
+            };
+
+            ReactDOM.createRoot(document.querySelector('#recipiente')).render(<App/>);
+
+        </script>
+
+    </body>
+</html>
